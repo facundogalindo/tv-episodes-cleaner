@@ -4,10 +4,7 @@ from models import ProcessStats
 
 
 def write_report(report_path: Path, stats: ProcessStats) -> None:
-    """
-    Writes the markdown report with processing statistics
-    and a brief explanation of the applied rules.
-    """
+
 
     content = f"""# Data Quality Report
 

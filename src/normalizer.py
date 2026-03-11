@@ -55,11 +55,7 @@ def parse_air_date(value: str) -> str:
 
 
 def normalize_row(raw_row: List[str], row_index: int) -> Optional[EpisodeRecord]:
-    """
-    Normalizes a raw CSV row according to the challenge rules.
-    """
 
-    # Ensure the row has exactly 5 columns
     row = list(raw_row[:5])
     while len(row) < 5:
         row.append("")

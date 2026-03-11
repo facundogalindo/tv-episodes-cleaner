@@ -6,10 +6,6 @@ from models import EpisodeRecord
 
 
 def read_csv_rows(input_path: Path) -> List[List[str]]:
-    """
-    Reads the CSV file and returns raw rows.
-    Supports files with or without header.
-    """
 
     rows: List[List[str]] = []
 
@@ -39,15 +35,10 @@ def read_csv_rows(input_path: Path) -> List[List[str]]:
     return rows
 
 
-def write_clean_csv(output_path: Path, records: List[EpisodeRecord]) -> None:
-    """
-    Writes the cleaned dataset to episodes_clean.csv
-    """
-
+def write_clean_csv(output_path, records):
     with output_path.open("w", newline="", encoding="utf-8") as file:
-        writer = csv.writer(file)
+        writer = csv.writer(file, quoting=csv.QUOTE_MINIMAL)
 
-        # Header required by challenge
         writer.writerow([
             "SeriesName",
             "SeasonNumber",
@@ -56,11 +47,11 @@ def write_clean_csv(output_path: Path, records: List[EpisodeRecord]) -> None:
             "AirDate"
         ])
 
-        for record in records:
+        for r in records:
             writer.writerow([
-                record.series_name,
-                record.season_number,
-                record.episode_number,
-                record.episode_title,
-                record.air_date
+                r.series_name,
+                r.season_number,
+                r.episode_number,
+                r.episode_title,
+                r.air_date
             ])

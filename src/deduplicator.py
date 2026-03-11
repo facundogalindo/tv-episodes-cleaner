@@ -5,9 +5,7 @@ from normalizer import normalize_for_compare
 
 
 def make_duplicate_keys(record: EpisodeRecord) -> List[Tuple]:
-    """
-    Builds duplicate keys exactly as defined in the challenge.
-    """
+
 
     normalized_series = normalize_for_compare(record.series_name)
     normalized_title = normalize_for_compare(record.episode_title)
@@ -20,15 +18,7 @@ def make_duplicate_keys(record: EpisodeRecord) -> List[Tuple]:
 
 
 def record_quality_score(record: EpisodeRecord) -> Tuple[int, int, int, int]:
-    """
-    Returns a score used to decide which duplicate to keep.
 
-    Priority:
-    1. Valid air date over 'Unknown'
-    2. Known title over 'Untitled Episode'
-    3. Valid season and episode numbers
-    4. Earlier original index wins if still tied
-    """
 
     has_valid_air_date = 1 if record.air_date != "Unknown" else 0
     has_known_title = 1 if record.episode_title != "Untitled Episode" else 0
@@ -43,9 +33,7 @@ def record_quality_score(record: EpisodeRecord) -> Tuple[int, int, int, int]:
 
 
 class DisjointSet:
-    """
-    Union-Find structure used to group connected duplicate records.
-    """
+
 
     def __init__(self, size: int) -> None:
         self.parent = list(range(size))
@@ -73,13 +61,7 @@ class DisjointSet:
 
 
 def deduplicate_records(records: List[EpisodeRecord]) -> Tuple[List[EpisodeRecord], int]:
-    """
-    Groups duplicate records and keeps the best one in each group.
 
-    Returns:
-    - final_records: deduplicated list
-    - duplicates_detected: number of removed duplicate records
-    """
 
     if not records:
         return [], 0

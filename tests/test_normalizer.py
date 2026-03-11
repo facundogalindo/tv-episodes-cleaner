@@ -5,7 +5,6 @@ sys.path.append(str(Path(__file__).resolve().parents[1] / "src"))
 
 from normalizer import normalize_row, parse_air_date, parse_positive_int
 
-
 def test_parse_positive_int_valid():
     assert parse_positive_int("12") == 12
 
