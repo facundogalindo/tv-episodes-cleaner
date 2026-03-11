@@ -9,7 +9,6 @@ from normalizer import normalize_row, parse_air_date, parse_positive_int
 def test_parse_positive_int_valid():
     assert parse_positive_int("12") == 12
 
-
 def test_parse_positive_int_invalid():
     assert parse_positive_int("abc") == 0
     assert parse_positive_int("-5") == 0

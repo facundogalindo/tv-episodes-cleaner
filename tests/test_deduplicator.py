@@ -1,5 +1,12 @@
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parents[1] / "src"))
+
 from deduplicator import deduplicate_records
 from models import EpisodeRecord
+
+
 
 
 def test_deduplicate_keeps_best_record_by_air_date():
