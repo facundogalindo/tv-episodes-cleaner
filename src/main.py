@@ -8,9 +8,11 @@ from report import write_report
 
 
 def main() -> None:
-    input_path = Path("../data/input/episodes.csv")
-    output_csv_path = Path("../data/output/episodes_clean.csv")
-    report_path = Path("../data/output/report.md")
+    BASE_DIR = Path(__file__).resolve().parent.parent
+
+    input_path = BASE_DIR / "data" / "input" / "episodes.csv"
+    output_csv_path = BASE_DIR / "data" / "output" / "episodes_clean.csv"
+    report_path = BASE_DIR / "data" / "output" / "report.md"
 
     stats = ProcessStats()
     normalized_records = []
